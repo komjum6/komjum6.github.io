@@ -24,7 +24,6 @@ A simple Site (WIP)
         <li><a href="Little Blog.html">Little Blog</a></li>
         <li><a href="Gameknowledge.html">Gameknowledge</a></li>
     </ul>
-
     <!-- Last Line of the Site -->
     <h3>Thanks for Visiting my domain</h3>
 </body>
