@@ -3,7 +3,7 @@ A simple Site (WIP)
 
 ## It appears this works with Markdown Syntax
 
-'''html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,4 +36,4 @@ A simple Site (WIP)
     The Netherlands
 </address>
 </html>
-'''
+
