@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
 app = Flask(__name__, static_url_path='',static_folder="WiWebSite")
 
-webcode = open('WiWebSite.html').read()
+webcode = open('index.html').read()
 registerfile = open('register.html').read()
 
 @app.route('/')
