@@ -1,53 +1,50 @@
 from flask import Flask, render_template
+from flask_frozen import Freezer
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
-app = Flask(__name__, static_url_path='',static_folder="WiWebSite")
+app = Flask(__name__, static_url_path='',static_folder="static")
 
-webcode = open('index.html').read()
-registerfile = open('register.html').read()
+freezer = Freezer(app)
 
+#De Root Map
 @app.route('/')
-def webprint():
-    return webcode
+def index():
+    return render_template('index.html')
+    
+#De plaats waar alles gevisualiseerd word
+@app.route('/accomplishments')
+def accomplishments():
+    return render_template('accomplishments.html')
 
-#Hier is een experimentele aanpak
+#De plaats voor contact info
+@app.route('/work')
+def work():
+    return render_template('work.html')
 
+#Een plaats voor een introductie etc
+@app.route('/notes')
+def notes():
+    return render_template('notes.html')
+	
+#
+@app.route('/littleblog')
+def littleblog():
+    return render_template('littleblog.html')
+	
+#
+@app.route('/gameknowledge')
+def gameknowledge():
+    return render_template('gameknowledge.html')
 
-class RegistrationForm(Form):
-    username = StringField('Username', [validators.Length(min=4, max=25)])
-    email = StringField('Email Address', [validators.Length(min=6, max=35)])
-    password = PasswordField('New Password', [
-        validators.DataRequired(),
-        validators.EqualTo('confirm', message='Passwords must match')
-    ])
-    confirm = PasswordField('Repeat Password')
-    accept_tos = BooleanField('I accept the TOS', [validators.DataRequired()])
+#error 500 handling
+@app.errorhandler(500)
+def internal_error(error):
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate():
-        user = User(form.username.data, form.email.data,
-                    form.password.data)
-        db_session.add(user)
-        flash('Thanks for registering')
-        return redirect(url_for('login'))
-    return registerfile
+    return str(error)
 
-#Hier eindigt de experimentele aanpak
+#error 404 handling
+@app.errorhandler(404)
+def page_not_found(error):
+    return str(error)
 
-if __name__ == "__FlaskFile__":
-    app.run(debug=False)
-
-"""    
-set FLASK_APP=FlaskFile.py
-py -m flask run
-
-url_for('static', filename='style.css')
-
-name=None
-render_template("WiWebSite.html", name=name)
-
-
-
-return render_template('register.html', form=form)
-"""
+if __name__ == '__main__':
+    freezer.freeze()
