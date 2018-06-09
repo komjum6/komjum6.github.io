@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% set active_page = 'index' %}
+{% block title %}La Loko de Pensoj{% endblock %}
+
+{% block container %}
+<body style="background-color: lightgoldenrodyellow;">
+    <!-- First Line of the Site -->
+    <h1>You have entered the domain of JPHH, Welcome</h1>
+
+    <h1>This is the Introduction Page</h1>
+    <!-- Site Navigation Menu -->
+    <ul class="Navbar">
+        <li><a href="index.html">Home Page</a></li>
+        <li><a href="accomplishments.html">Accomplishments</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="notes.html">Notes</a></li>
+        <li><a href="littleblog.html">Little Blog</a></li>
+        <li><a href="gameknowledge.html">Gameknowledge</a></li>
+    </ul>
+{% endblock %}
+{% block content %}    
+    <h3>Thanks for Visiting my Domain</h3>
+<!--Een stukje met het adres-->
+<address class="Address">
+    Written by <a href="mailto:jphh56@gmail.com">JPHH</a>.<br>
+    Visit us at: This Site<br>
+    This site.com<br>
+    Somewhere<br>
+    The Netherlands
+</address>
+{% endblock %}
